@@ -15,7 +15,8 @@ const AddContactForm = ({dataContacts}) => {
     dataContacts.setContacts([...dataContacts.contacts, {name,mail,phone}])
 
   return (
-    <div className="card">
+    <div className="card mt-0">
+      <h2 className="mt-0">Add Contact</h2>
       <p>Name: <input type="text" id="name" name="name" placeholder="Name" onChange={handlerName}/></p>
       <p>Mail: <input type="text" id="mail" name="mail" placeholder="Mail" onChange={handlerMail} /></p>
       <p>Phone: <input type="text" id="phone" name="phone" placeholder="Phone number" onChange={handlerPhone} /></p>

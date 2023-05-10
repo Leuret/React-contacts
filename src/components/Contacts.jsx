@@ -9,9 +9,13 @@ const Contacts = ({dataContacts}) => {
 
   return (
     <div>
-      <SearchBar dataFilter={{filter, setFilter}}/>
-      <ContactList contacts={dataContacts.contacts} filter={filter}/>
-      <AddContact dataContacts={dataContacts}/>
+      <div className="width-70">
+        <SearchBar dataFilter={{filter, setFilter}}/>
+        <ContactList contacts={dataContacts.contacts} filter={filter}/>
+      </div>
+      <div className="width-30">
+        <AddContact dataContacts={dataContacts}/>
+      </div>
       <br></br>
     </div>
     
