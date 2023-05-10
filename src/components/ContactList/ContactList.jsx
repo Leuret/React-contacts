@@ -3,9 +3,8 @@ import ContactCard from "../ContactCard/ContactCard"
 const ContactList = ({contacts, filter}) => {
 
   const filtered = contacts.filter( contact => {
-    const name =contact.name
-    console.log(filter)
-    return name.includes(filter)
+    const name =contact.name.toLowerCase()
+    return name.includes(filter.toLowerCase())
   })
 
   return (
