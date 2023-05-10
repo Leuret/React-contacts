@@ -1,3 +1,5 @@
+import "./SearchBar.css"
+
 const SearchBar = ({dataFilter}) => {
 
   const handlerFilter = event => dataFilter.setFilter(event.target.value)

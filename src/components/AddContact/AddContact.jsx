@@ -1,4 +1,4 @@
-import AddContactForm from "./AddContactForm"
+import AddContactForm from "../AddContactForm/AddContactForm"
 const AddContact = ({dataContacts}) => {
   
   return (

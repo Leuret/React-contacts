@@ -1,5 +1,6 @@
-import mailIcon from "./../assets/envelope-light.svg"
-import phoneIcon from "./../assets/phone-light.svg"
+import mailIcon from "./../../assets/envelope-light.svg"
+import phoneIcon from "./../../assets/phone-light.svg"
+import "./ContactCard.css"
 
 const ContactCard = ({contact}) => {
 

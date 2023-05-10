@@ -1,0 +1,11 @@
+input {
+  all: unset;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  padding: .5rem;
+  width: 100%;
+}
+
+.mt-0 {
+  margin-top: 0;
+}

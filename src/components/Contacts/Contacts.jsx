@@ -1,7 +1,8 @@
 import { useState } from "react"
-import AddContact from "./AddContact"
-import ContactList from "./ContactList"
-import SearchBar from "./SearchBar"
+import AddContact from "../AddContact/AddContact"
+import ContactList from "../ContactList/ContactList"
+import SearchBar from "../SearchBar/SearchBar"
+import "./Contacts.css"
 
 const Contacts = ({dataContacts}) => {
 
