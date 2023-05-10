@@ -5,7 +5,7 @@ const SearchBar = ({dataFilter}) => {
   return (
     <div>
       <p>
-        <input type="text" id="filter" name="search" placeholder="Filter by name.." onChange={handlerFilter} />
+        <input type="text" id="filter" name="search" placeholder="Filter by name.." onChange={handlerFilter}/>
       </p>
     </div>
   )
