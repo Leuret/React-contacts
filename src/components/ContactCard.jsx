@@ -1,9 +1,10 @@
 const ContactCard = ({contact}) => {
-  
+
   return (
     <div className="card">
-      <p>{contact.name}</p>
+      <p><b>{contact.name}</b></p>
       <p>{contact.mail}</p>
+      <p>{contact.phone}</p>
     </div>
     
   )

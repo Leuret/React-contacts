@@ -1,11 +1,13 @@
-const SearchBar = () => {
-  
+const SearchBar = ({dataFilter}) => {
+
+  const handlerFilter = event => dataFilter.setFilter(event.target.value)
+
   return (
     <div>
-      <input type="text" id="search" name="search" placeholder="Search.." />
-      <button>Search</button>
+      <p>
+        <input type="text" id="filter" name="search" placeholder="Filter by name.." onChange={handlerFilter} />
+      </p>
     </div>
-    
   )
 }
 

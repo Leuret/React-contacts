@@ -1,12 +1,17 @@
 import ContactCard from "./ContactCard"
 
-const ContactList = ({contacts}) => {
-  
+const ContactList = ({contacts, filter}) => {
+
+  const filtered = contacts.filter( contact => {
+    const name =contact.name
+    console.log(filter)
+    return name.includes(filter)
+  })
+
   return (
     <div>
-      <h2>Contact List</h2>
       {
-        contacts.map((contact, index) => <ContactCard contact={contact} key={index}/>)
+        filtered.map((contact, index) => <ContactCard contact={contact} key={index}/>)
       }
     </div>
     

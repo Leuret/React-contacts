@@ -1,10 +1,10 @@
 import AddContactForm from "./AddContactForm"
-const AddContact = () => {
+const AddContact = ({dataContacts}) => {
   
   return (
     <div>
       <h2>Add Contact</h2>
-      <AddContactForm />
+      <AddContactForm dataContacts={dataContacts}/>
     </div>
     
   )
