@@ -5,6 +5,8 @@ import { useState } from 'react';
 const App = () => {
 
   const [contacts, setContacts] = useState([
+  ])
+  /* 
     {
       name: "Fulanito",
       mail: "fulanito@gmail.com",
@@ -20,7 +22,7 @@ const App = () => {
       mail: "otro@gmail.com",
       phone: "348973248"
     }
-  ])
+    */
 
   return (
     <div className="App">

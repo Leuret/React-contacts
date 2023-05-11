@@ -11,8 +11,16 @@ const Contacts = ({dataContacts}) => {
   return (
     <div>
       <div className="width-70">
-        <SearchBar dataFilter={{filter, setFilter}}/>
-        <ContactList contacts={dataContacts.contacts} filter={filter}/>
+      {
+        dataContacts.contacts.length > 0 
+        ?
+          <div>
+            <SearchBar dataFilter={{filter, setFilter}}/>
+            <ContactList contacts={dataContacts.contacts} filter={filter}/>
+          </div>
+        :
+          <p>There are no contacts. Use the Add Contact form on the right!</p>
+      }
       </div>
       <div className="width-30">
         <AddContact dataContacts={dataContacts}/>
