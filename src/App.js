@@ -1,28 +1,28 @@
 import './App.css';
 import Contacts from './components/Contacts/Contacts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const App = () => {
 
-  const [contacts, setContacts] = useState([
-  ])
-  /* 
-    {
-      name: "Fulanito",
-      mail: "fulanito@gmail.com",
-      phone: "12345678"
-    },
-    {
-      name: "Menganito",
-      mail: "menganito@gmail.com",
-      phone: "87654321"
-    },
-    {
-      name: "Otro user",
-      mail: "otro@gmail.com",
-      phone: "348973248"
-    }
-    */
+  const [contacts, setContacts] = useState([])
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(data => {
+      const dataFormatted = data.map(person => {
+        return {
+          id: person.id,
+          name: person.name,
+          mail: person.email,
+          phone: person.phone
+        }
+      })
+      .slice(0, 5)
+
+      setContacts(dataFormatted)
+    })
+  }, [])
 
   return (
     <div className="App">
