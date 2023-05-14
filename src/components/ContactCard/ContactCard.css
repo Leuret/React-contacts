@@ -1,5 +1,4 @@
 .icon {
-  margin-right: .25rem;
   vertical-align: middle;
   width: 1rem;
 }
@@ -21,4 +20,35 @@ a {
 
 .mt-0 {
   margin-top: 0;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mr-1 {
+  margin-right: 1rem;
+}
+
+.ml-1 {
+  margin-left: 1rem;
+}
+
+.btn-outlined {
+  background: none;
+  border:1px solid #8118b7;
+  color:#8118b7;
+}
+
+.btn-outlined:hover {
+  background-color:#8118b7;
+  color: #fff;
+}
+
+.btn-rounded {
+  border-radius: 50%;
+}
+
+.rotate {
+  transform: rotate(180deg);
 }

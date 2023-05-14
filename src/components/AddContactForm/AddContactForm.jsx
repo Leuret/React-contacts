@@ -12,9 +12,10 @@ const AddContactForm = ({dataContacts}) => {
   const handlerPhone = event => setPhone(event.target.value)
 
   // Function to add a new Contact
-  const addContact = () => 
-    dataContacts.setContacts([...dataContacts.contacts, {name,mail,phone}])
-
+  const addContact = () => {
+    const total = dataContacts.contacts.length + 1
+    dataContacts.setContacts([...dataContacts.contacts, {total,name,mail,phone}])
+  }
   return (
     <div className="card mt-0">
       <h2 className="mt-0">Add Contact</h2>

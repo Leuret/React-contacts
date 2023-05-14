@@ -16,16 +16,19 @@ const Contacts = ({dataContacts}) => {
         ?
           <div>
             <SearchBar dataFilter={{filter, setFilter}}/>
-            <ContactList contacts={dataContacts.contacts} filter={filter}/>
+            <ContactList dataContacts={dataContacts} filter={filter}/>
+      <br></br>
           </div>
         :
-          <p>There are no contacts. Use the Add Contact form on the right!</p>
+          <div>
+            <h3>There are no contacts.</h3>
+            <p> Use the Add Contact form on the right!</p>
+          </div>
       }
       </div>
       <div className="width-30">
         <AddContact dataContacts={dataContacts}/>
       </div>
-      <br></br>
     </div>
     
   )
