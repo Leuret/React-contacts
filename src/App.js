@@ -1,11 +1,13 @@
 import './App.css';
 import Contacts from './components/Contacts/Contacts';
 import { useEffect, useState } from 'react';
-import AddContactContext from './contexts/AddContactContext'
+import ContactContext from './contexts/ContactContext'
+import ThemeContext from './contexts/ThemeContext'
 
 const App = () => {
 
   const [contacts, setContacts] = useState([])
+  const [theme, setTheme] = useState('light')
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -25,14 +27,22 @@ const App = () => {
     })
   }, [])
 
-  return (
-    <div className="App">
-      <h1>Contacts App</h1>
+  const changeTheme = () => {
+    setTheme(theme === "dark"? "light" : "dark")
+  }
 
-      <AddContactContext.Provider value={{contacts, setContacts}}>
-        <Contacts />
-      </AddContactContext.Provider>
-    </div>
+  return (
+    <ThemeContext.Provider value={theme}>
+      <div className={"App " + theme}>
+        <h1 className="mt-0">Contacts App</h1>
+        <p className="align-right">
+          <button className="btn" onClick={changeTheme}>Change Theme</button>
+        </p>
+        <ContactContext.Provider value={{contacts, setContacts}}>
+            <Contacts />
+        </ContactContext.Provider>
+      </div>
+    </ThemeContext.Provider>
   );
 }
 

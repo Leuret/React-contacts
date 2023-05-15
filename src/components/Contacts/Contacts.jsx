@@ -4,17 +4,19 @@ import ContactList from "../ContactList/ContactList"
 import SearchBar from "../SearchBar/SearchBar"
 import "./Contacts.css"
 import { useContext } from "react";
-import AddContactContext from '../../contexts/AddContactContext'
+import ContactContext from '../../contexts/ContactContext'
+import ThemeContext from '../../contexts/ThemeContext'
 
 
 const Contacts = () => {
 
-  const dataContacts = useContext(AddContactContext)
+  const dataContacts = useContext(ContactContext)
+  const theme = useContext(ThemeContext)
 
   const [filter, setFilter] = useState("")
 
   return (
-    <div>
+    <div className={theme}>
       <div className="width-70">
       {
         dataContacts.contacts.length > 0 

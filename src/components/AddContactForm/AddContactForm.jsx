@@ -1,11 +1,11 @@
 import { useState } from "react"
 import './AddContactForm.css';
 import { useContext } from "react";
-import AddContactContext from '../../contexts/AddContactContext'
+import ContactContext from '../../contexts/ContactContext'
 
 const AddContactForm = () => {
 
-  const dataContacts = useContext(AddContactContext)
+  const dataContacts = useContext(ContactContext)
 
   // Component States
   const [name, setName] = useState("")

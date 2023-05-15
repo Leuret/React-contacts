@@ -52,3 +52,23 @@ a {
 .rotate {
   transform: rotate(180deg);
 }
+
+/* Dark Theme */
+
+.dark a {
+  color: #fff;
+}
+
+.dark .card {
+  border-color: #fff;
+}
+
+.dark input {
+  border-color: #fff;
+}
+
+.dark .btn-outlined {
+  background: none;
+  border:1px solid #fff;
+  color:#fff;
+}

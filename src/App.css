@@ -1,8 +1,28 @@
 .App{
-  margin: auto 2rem;
-
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 2rem;
 }
 
 h1 {
   color: #8118b7;
+}
+
+.align-right {
+  text-align: right;
+}
+
+/* Dark Theme */
+
+.App.dark {
+  background-color: #23272f;
+}
+
+
+.dark {
+  color: #fff;
+}
+
+.dark h1 {
+  color: #fff;
 }

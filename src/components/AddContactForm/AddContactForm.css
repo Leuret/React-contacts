@@ -24,3 +24,18 @@ input {
 .mt-0 {
   margin-top: 0;
 }
+
+/* Dark Theme */
+
+.dark .card {
+  border-color: #fff;
+}
+
+.dark input {
+  border-color: #fff;
+}
+
+.dark .btn:hover {
+  background-color: #fff;
+  color: #8118b7;
+}

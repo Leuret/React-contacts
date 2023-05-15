@@ -1,10 +1,10 @@
 import ContactCard from "../ContactCard/ContactCard"
 import { useContext } from "react";
-import AddContactContext from '../../contexts/AddContactContext'
+import ContactContext from '../../contexts/ContactContext'
 
 const ContactList = ({filter}) => {
 
-  const dataContacts = useContext(AddContactContext)
+  const dataContacts = useContext(ContactContext)
 
   // Function to edit a  Contact
   const editContact = (id,name,mail,phone) => {
