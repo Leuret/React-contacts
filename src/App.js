@@ -1,6 +1,7 @@
 import './App.css';
 import Contacts from './components/Contacts/Contacts';
 import { useEffect, useState } from 'react';
+import AddContactContext from './contexts/AddContactContext'
 
 const App = () => {
 
@@ -27,7 +28,10 @@ const App = () => {
   return (
     <div className="App">
       <h1>Contacts App</h1>
-      <Contacts dataContacts={{contacts, setContacts}} />
+
+      <AddContactContext.Provider value={{contacts, setContacts}}>
+        <Contacts />
+      </AddContactContext.Provider>
     </div>
   );
 }

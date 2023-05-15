@@ -1,12 +1,19 @@
 import { useState } from "react"
 import './AddContactForm.css';
+import { useContext } from "react";
+import AddContactContext from '../../contexts/AddContactContext'
 
-const AddContactForm = ({dataContacts}) => {
+const AddContactForm = () => {
 
+  const dataContacts = useContext(AddContactContext)
+
+  // Component States
   const [name, setName] = useState("")
   const [mail, setMail] = useState("")
   const [phone, setPhone] = useState("")
 
+  
+  // event Handler Functions
   const handlerName = event => setName(event.target.value)
   const handlerMail = event => setMail(event.target.value)
   const handlerPhone = event => setPhone(event.target.value)
@@ -16,6 +23,7 @@ const AddContactForm = ({dataContacts}) => {
     const total = dataContacts.contacts.length + 1
     dataContacts.setContacts([...dataContacts.contacts, {total,name,mail,phone}])
   }
+
   return (
     <div className="card mt-0">
       <h2 className="mt-0">Add Contact</h2>
@@ -25,7 +33,6 @@ const AddContactForm = ({dataContacts}) => {
       <button className="btn" onClick={addContact}>Add Contact</button>
       <br></br>
     </div>
-    
   )
 }
 

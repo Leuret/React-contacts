@@ -3,8 +3,13 @@ import AddContact from "../AddContact/AddContact"
 import ContactList from "../ContactList/ContactList"
 import SearchBar from "../SearchBar/SearchBar"
 import "./Contacts.css"
+import { useContext } from "react";
+import AddContactContext from '../../contexts/AddContactContext'
 
-const Contacts = ({dataContacts}) => {
+
+const Contacts = () => {
+
+  const dataContacts = useContext(AddContactContext)
 
   const [filter, setFilter] = useState("")
 
@@ -16,8 +21,8 @@ const Contacts = ({dataContacts}) => {
         ?
           <div>
             <SearchBar dataFilter={{filter, setFilter}}/>
-            <ContactList dataContacts={dataContacts} filter={filter}/>
-      <br></br>
+            <ContactList filter={filter}/>
+            <br></br>
           </div>
         :
           <div>
@@ -27,7 +32,7 @@ const Contacts = ({dataContacts}) => {
       }
       </div>
       <div className="width-30">
-        <AddContact dataContacts={dataContacts}/>
+        <AddContact />
       </div>
     </div>
     
