@@ -25,15 +25,24 @@ const ContactList = ({filter}) => {
     ))
   }
 
+  const filteredContacts = dataContacts.contacts
+  .filter(contact =>
+    contact.name.length > 0 &&
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  )
+
   return (
     <div>
       {
-        dataContacts.contacts
-        .filter(contact =>
-          contact.name.length > 0 &&
-          contact.name.toLowerCase().includes(filter.toLowerCase())
-        )
-        .map((contact, index) => <ContactCard contact={contact} functions={{editContact, deleteContact}} key={index}/>)
+        filteredContacts.length > 0
+        ?
+          filteredContacts
+          .map((contact, index) => <ContactCard contact={contact} functions={{editContact, deleteContact}} key={index}/>)
+        :
+          <div>
+            <p>There are no results with your filters.</p>
+            <p>Modify your filter in order to see results</p>
+          </div>
       }
     </div>
     
