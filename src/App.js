@@ -1,31 +1,17 @@
 import './App.css';
 import Contacts from './components/Contacts/Contacts';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ContactContext from './contexts/ContactContext'
 import ThemeContext from './contexts/ThemeContext'
+import useFetch from "./hooks/useFetch"
 
 const App = () => {
 
-  const [contacts, setContacts] = useState([])
+
+  // Retrieve data
+  const [contacts, setContacts] = useFetch("https://jsonplaceholder.typicode.com/users")
+
   const [theme, setTheme] = useState('light')
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-    .then(response => response.json())
-    .then(data => {
-      const dataFormatted = data.map(person => {
-        return {
-          id: person.id,
-          name: person.name,
-          mail: person.email,
-          phone: person.phone
-        }
-      })
-      .slice(0, 5)
-
-      setContacts(dataFormatted)
-    })
-  }, [])
 
   const changeTheme = () => {
     setTheme(theme === "dark"? "light" : "dark")
