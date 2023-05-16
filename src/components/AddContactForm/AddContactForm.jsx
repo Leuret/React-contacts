@@ -20,8 +20,8 @@ const AddContactForm = () => {
 
   // Function to add a new Contact
   const addContact = () => {
-    const total = contacts.length + 1
-    setContacts([...contacts, {total,name,mail,phone}])
+    const id = contacts.length + 1
+    setContacts([...contacts, {id,name,mail,phone}])
     setName("")
     setMail("")
     setPhone("")
