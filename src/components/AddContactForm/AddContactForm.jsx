@@ -5,7 +5,7 @@ import ContactContext from '../../contexts/ContactContext'
 
 const AddContactForm = () => {
 
-  const dataContacts = useContext(ContactContext)
+  const {contacts, setContacts} = useContext(ContactContext)
 
   // Component States
   const [name, setName] = useState("")
@@ -20,16 +20,19 @@ const AddContactForm = () => {
 
   // Function to add a new Contact
   const addContact = () => {
-    const total = dataContacts.contacts.length + 1
-    dataContacts.setContacts([...dataContacts.contacts, {total,name,mail,phone}])
+    const total = contacts.length + 1
+    setContacts([...contacts, {total,name,mail,phone}])
+    setName("")
+    setMail("")
+    setPhone("")
   }
 
   return (
     <div className="card mt-0">
       <h2 className="mt-0">Add Contact</h2>
-      <p>Name: <input type="text" id="name" name="name" placeholder="Name" onChange={handlerName}/></p>
-      <p>Mail: <input type="text" id="mail" name="mail" placeholder="Mail" onChange={handlerMail} /></p>
-      <p>Phone: <input type="text" id="phone" name="phone" placeholder="Phone number" onChange={handlerPhone} /></p>
+      <p>Name: <input type="text" id="name" name="name" placeholder="Name" value={name} onChange={handlerName}/></p>
+      <p>Mail: <input type="text" id="mail" name="mail" placeholder="Mail" value={mail} onChange={handlerMail} /></p>
+      <p>Phone: <input type="text" id="phone" name="phone" placeholder="Phone number" value={phone} onChange={handlerPhone} /></p>
       <button className="btn" onClick={addContact}>Add Contact</button>
       <br></br>
     </div>
