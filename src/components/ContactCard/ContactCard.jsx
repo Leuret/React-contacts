@@ -8,9 +8,9 @@ const ContactCard = ({contact,functions}) => {
 
   const [isShown, setShow] = useState(false)
   const [isEditable, setEdit] = useState(false)
-  const [name, setName] = useState("")
-  const [mail, setMail] = useState("")
-  const [phone, setPhone] = useState("")
+  const [name, setName] = useState(contact.name)
+  const [mail, setMail] = useState(contact.mail)
+  const [phone, setPhone] = useState(contact.phone)
 
   const handlerShow = () => setShow(!isShown)
   const handlerEdit = () => setEdit(!isEditable)
