@@ -12,6 +12,30 @@ h1 {
   text-align: right;
 }
 
+.btn {
+  background-color: #8118b7;
+  border-color: transparent;
+  border-radius: .25rem;
+  color: #fff;
+  cursor: pointer;
+  padding: .5rem;
+}
+
+.btn-outlined {
+  background: none;
+  border:1px solid #8118b7;
+  color:#8118b7;
+}
+
+.btn-outlined:hover {
+  background-color:#8118b7;
+  color: #fff;
+}
+
+.btn-rounded {
+  border-radius: 50%;
+}
+
 /* Dark Theme */
 
 .App.dark {

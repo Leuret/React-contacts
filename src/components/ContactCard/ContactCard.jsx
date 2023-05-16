@@ -3,35 +3,62 @@ import mailIcon from "./../../assets/envelope-light.svg"
 import phoneIcon from "./../../assets/phone-light.svg"
 import arrowIcon from "./../../assets/chevron-down-light.svg"
 import "./ContactCard.css"
+import { useParams } from "react-router-dom"
+import { useContext } from "react";
+import ContactContext from '../../contexts/ContactContext'
+import { useNavigate } from "react-router-dom";
 
-const ContactCard = ({contact,functions}) => {
+const ContactCard = () => {
 
-  const [isShown, setShow] = useState(false)
+  const {contacts, setContacts} = useContext(ContactContext)
+  const { id } = useParams()
+  const contact = contacts[id - 1]
+
+  const navigate = useNavigate();
+
+  const goToContactList = () => navigate("/contacts-list")
+
   const [isEditable, setEdit] = useState(false)
   const [name, setName] = useState(contact.name)
   const [mail, setMail] = useState(contact.mail)
   const [phone, setPhone] = useState(contact.phone)
 
-  const handlerShow = () => setShow(!isShown)
   const handlerEdit = () => setEdit(!isEditable)
   const handlerName = event => setName(event.target.value)
   const handlerMail = event => setMail(event.target.value)
   const handlerPhone = event => setPhone(event.target.value)
 
+
+  // Function to edit a  Contact
   const editContact = () => {
-    functions.editContact(contact.id, name, mail, phone)
+    setContacts(contacts
+    .map( eachContact => {
+      if (eachContact === contact)
+        return {id, name, mail, phone}
+      else
+        return eachContact
+    }))
     setEdit(!isEditable)
   }
 
+  
+  // Function to delete a  Contact
+  const deleteContact = () => {
+    setContacts(contacts.filter( eachContact =>
+      eachContact !== contact
+    ))
+    goToContactList()
+  }
+
   return (
-    <div className="card">
-      <div className="mt-0">
-        <button className="btn btn-outlined btn-rounded mr-1" onClick={handlerShow}><img src={arrowIcon} alt="Show" className={isShown ? "rotate icon" : "icon"} /></button>
-        <b>{contact.name}</b>
-      </div>
-      {
-        isShown
-        &&
+    <div>
+      <button className="btn btn-outlined mr-1" onClick={goToContactList}><img src={arrowIcon} alt="Show" className="rotate-left icon" />Go back to list</button>
+
+      <div className="card">
+        <div className="mt-0">
+          <b>{contact.name}</b>
+        </div>
+        {
           <div className="mt-1">
             {
               isEditable 
@@ -40,7 +67,8 @@ const ContactCard = ({contact,functions}) => {
                   <p>Name: <input type="text" id="name" name="name" defaultValue={contact.name} onChange={handlerName}/></p>
                   <p>Mail: <input type="text" id="mail" name="mail"  defaultValue={contact.mail} onChange={handlerMail} /></p>
                   <p>Phone: <input type="text" id="phone" name="phone"  defaultValue={contact.phone} onChange={handlerPhone} /></p>
-                  <button className="btn" onClick={editContact}>Edit Contact</button>
+                  <button className="btn btn-outlined" onClick={() => setEdit(!isEditable)}>Cancel</button>
+                  <button className="btn ml-1" onClick={editContact}>Edit Contact</button>
                 </div>
               :
                 <div>
@@ -54,11 +82,12 @@ const ContactCard = ({contact,functions}) => {
                   </div>
                   <p></p>
                   <button className="btn btn-outlined" onClick={handlerEdit}>Edit</button>
-                  <button className="btn btn-outlined ml-1" onClick={() => functions.deleteContact(contact.id)}>Delete</button>
+                  <button className="btn btn-outlined ml-1" onClick={() => deleteContact(contact.id)}>Delete</button>
                 </div>
             }
           </div>
-      }
+        }
+      </div>
     </div>
   )
 }

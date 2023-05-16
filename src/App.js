@@ -4,6 +4,12 @@ import { useState } from 'react';
 import ContactContext from './contexts/ContactContext'
 import ThemeContext from './contexts/ThemeContext'
 import useFetch from "./hooks/useFetch"
+import { Routes, Route } from "react-router-dom"
+import Home from './components/Home/Home'
+import Menu from './components/Menu/Menu'
+import NotFound from './components/NotFound/NotFound'
+import AddContact from './components/AddContact/AddContact';
+import ContactCard from './components/ContactCard/ContactCard';
 
 const App = () => {
 
@@ -20,13 +26,33 @@ const App = () => {
   return (
     <ThemeContext.Provider value={theme}>
       <div className={"App " + theme}>
-        <h1 className="mt-0">Contacts App</h1>
+        <Menu/>
         <p className="align-right">
           <button className="btn" onClick={changeTheme}>Change Theme</button>
         </p>
-        <ContactContext.Provider value={{contacts, setContacts, loadingContacts, errorContacts}}>
-            <Contacts />
-        </ContactContext.Provider>
+
+        <Routes>
+          <Route path="/" element={ <Home/> } />
+          <Route path="/contacts-list" element={
+            <ContactContext.Provider value={{contacts, setContacts, loadingContacts, errorContacts}}>
+              <Contacts />
+            </ContactContext.Provider>
+          } >
+          </Route>
+          <Route path="/contacts-list/:id" element={
+            <ContactContext.Provider value={{contacts, setContacts}}>
+              <ContactCard />
+            </ContactContext.Provider>
+          } >
+          </Route>
+          <Route path="/add-contact" element={
+            <ContactContext.Provider value={{contacts, setContacts}}>
+              <AddContact/>
+            </ContactContext.Provider> 
+          } />
+          <Route path="*" element={ <NotFound/> } />
+        </Routes>
+
       </div>
     </ThemeContext.Provider>
   );

@@ -34,25 +34,13 @@ a {
   margin-left: 1rem;
 }
 
-.btn-outlined {
-  background: none;
-  border:1px solid #8118b7;
-  color:#8118b7;
+.rotate-left {
+  transform: rotate(90deg);
 }
 
-.btn-outlined:hover {
-  background-color:#8118b7;
-  color: #fff;
+.rotate-right {
+  transform: rotate(-90deg);
 }
-
-.btn-rounded {
-  border-radius: 50%;
-}
-
-.rotate {
-  transform: rotate(180deg);
-}
-
 /* Dark Theme */
 
 .dark a {

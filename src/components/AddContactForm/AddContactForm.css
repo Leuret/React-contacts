@@ -12,15 +12,6 @@ input {
   width: 100%;
 }
 
-.btn {
-  background-color: #8118b7;
-  border-color: transparent;
-  border-radius: .25rem;
-  color: #fff;
-  cursor: pointer;
-  padding: .5rem;
-}
-
 .mt-0 {
   margin-top: 0;
 }

@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import './AddContactForm.css';
-import { useContext } from "react";
 import ContactContext from '../../contexts/ContactContext'
+import { useNavigate } from "react-router-dom";
 
 const AddContactForm = () => {
 
   const {contacts, setContacts} = useContext(ContactContext)
+
+  const navigate = useNavigate();
 
   // Component States
   const [name, setName] = useState("")
@@ -25,7 +27,10 @@ const AddContactForm = () => {
     setName("")
     setMail("")
     setPhone("")
+    goToContactList()
   }
+
+  const goToContactList = () => navigate("/contacts-list")
 
   return (
     <div className="card mt-0">
@@ -33,7 +38,8 @@ const AddContactForm = () => {
       <p>Name: <input type="text" id="name" name="name" placeholder="Name" value={name} onChange={handlerName}/></p>
       <p>Mail: <input type="text" id="mail" name="mail" placeholder="Mail" value={mail} onChange={handlerMail} /></p>
       <p>Phone: <input type="text" id="phone" name="phone" placeholder="Phone number" value={phone} onChange={handlerPhone} /></p>
-      <button className="btn" onClick={addContact}>Add Contact</button>
+      <button className="btn btn-outlined" onClick={goToContactList}>Cancel</button>
+      <button className="btn ml-1" onClick={addContact}>Add Contact</button>
       <br></br>
     </div>
   )

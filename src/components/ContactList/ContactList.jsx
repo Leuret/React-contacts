@@ -1,29 +1,11 @@
-import ContactCard from "../ContactCard/ContactCard"
 import { useContext } from "react";
 import ContactContext from '../../contexts/ContactContext'
+import { Link } from "react-router-dom"
+import arrowIcon from "./../../assets/chevron-down-light.svg"
 
 const ContactList = ({filter}) => {
 
   const dataContacts = useContext(ContactContext)
-
-  // Function to edit a  Contact
-  const editContact = (id,name,mail,phone) => {
-    dataContacts.setContacts(dataContacts.contacts
-    .map( contact => {
-      if (contact.id === id)
-        return {id, name, mail, phone}
-      else
-        return contact
-    }))
-  }
-
-  // Function to delete a  Contact
-  const deleteContact = (index) => {
-    dataContacts.setContacts(dataContacts.contacts
-    .filter( contact =>
-      contact.id !== index
-    ))
-  }
 
   const filteredContacts = dataContacts.contacts
   .filter(contact =>
@@ -37,7 +19,11 @@ const ContactList = ({filter}) => {
         filteredContacts.length > 0
         ?
           filteredContacts
-          .map((contact, index) => <ContactCard contact={contact} functions={{editContact, deleteContact}} key={index}/>)
+          .map((contact, index) => (
+            <div className="card" key={index}>
+              <Link to={`/contacts-list/${contact.id}`}>{contact.name} <img src={arrowIcon} alt="Show" className="rotate-right icon" /></Link>
+            </div>
+          ))
         :
           <div>
             <p>There are no results with your filters.</p>

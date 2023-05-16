@@ -1,11 +1,11 @@
 import { useState } from "react"
-import AddContact from "../AddContact/AddContact"
 import ContactList from "../ContactList/ContactList"
 import SearchBar from "../SearchBar/SearchBar"
 import "./Contacts.css"
 import { useContext } from "react";
 import ContactContext from '../../contexts/ContactContext'
 import ThemeContext from '../../contexts/ThemeContext'
+import { Link } from "react-router-dom"
 
 
 const Contacts = () => {
@@ -17,7 +17,8 @@ const Contacts = () => {
 
   return (
     <div className={theme}>
-      <div className="width-70">
+      <div>
+        <Link className="btn mb-1" to="/add-contact">Add contact</Link>
       {
         errorContacts
         ?
@@ -38,9 +39,6 @@ const Contacts = () => {
             <p>Loading...</p>
           </div>
       }
-      </div>
-      <div className="width-30">
-        <AddContact />
       </div>
     </div>
     
