@@ -9,7 +9,7 @@ const App = () => {
 
 
   // Retrieve data
-  const [contacts, setContacts] = useFetch("https://jsonplaceholder.typicode.com/users")
+  const [contacts, setContacts, loadingContacts, errorContacts] = useFetch("https://jsonplaceholder.typicode.com/users")
 
   const [theme, setTheme] = useState('light')
 
@@ -24,7 +24,7 @@ const App = () => {
         <p className="align-right">
           <button className="btn" onClick={changeTheme}>Change Theme</button>
         </p>
-        <ContactContext.Provider value={{contacts, setContacts}}>
+        <ContactContext.Provider value={{contacts, setContacts, loadingContacts, errorContacts}}>
             <Contacts />
         </ContactContext.Provider>
       </div>

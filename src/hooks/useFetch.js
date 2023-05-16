@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 
 const useFetch = (url) => {
 
-  const [contacts, setContacts] = useState([])
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     fetch(url)
     .then(response => response.json())
     .then(data => {
+      /*Esto no debería ir aquí dentro, para que el fetch sea reutilizable */
       const dataFormatted = data.map(person => {
         return {
           id: person.id,
@@ -18,11 +21,13 @@ const useFetch = (url) => {
       })
       .slice(0, 5)
 
-      setContacts(dataFormatted)
+      setData(dataFormatted)
+      setLoading(false)
     })
+    .catch(() => setError(true))
   }, [url])
 
-  return [contacts, setContacts]
+  return [data, setData, loading, error]
 }
 
 export default useFetch

@@ -10,7 +10,7 @@ import ThemeContext from '../../contexts/ThemeContext'
 
 const Contacts = () => {
 
-  const dataContacts = useContext(ContactContext)
+  const {loadingContacts, errorContacts} = useContext(ContactContext)
   const theme = useContext(ThemeContext)
 
   const [filter, setFilter] = useState("")
@@ -19,7 +19,14 @@ const Contacts = () => {
     <div className={theme}>
       <div className="width-70">
       {
-        dataContacts.contacts.length > 0 
+        errorContacts
+        ?
+          <div>
+            <p>There has been an error.</p>
+            <p>Please try again in a few minutes.</p>
+          </div>
+        :
+        !loadingContacts
         ?
           <div>
             <SearchBar dataFilter={{filter, setFilter}}/>
@@ -28,8 +35,7 @@ const Contacts = () => {
           </div>
         :
           <div>
-            <h3>There are no contacts.</h3>
-            <p> Use the Add Contact form on the right!</p>
+            <p>Loading...</p>
           </div>
       }
       </div>
