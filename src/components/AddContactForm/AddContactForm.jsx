@@ -33,14 +33,17 @@ const AddContactForm = () => {
   const goToContactList = () => navigate("/contacts-list")
 
   return (
-    <div className="card mt-0">
-      <h2 className="mt-0">Add Contact</h2>
-      <p>Name: <input type="text" id="name" name="name" placeholder="Name" value={name} onChange={handlerName}/></p>
-      <p>Mail: <input type="text" id="mail" name="mail" placeholder="Mail" value={mail} onChange={handlerMail} /></p>
-      <p>Phone: <input type="text" id="phone" name="phone" placeholder="Phone number" value={phone} onChange={handlerPhone} /></p>
-      <button className="btn btn-outlined" onClick={goToContactList}>Cancel</button>
-      <button className="btn ml-1" onClick={addContact}>Add Contact</button>
-      <br></br>
+    <div>
+      <button className="btn btn-outlined mb-1" onClick={goToContactList}> &lt; Go back to list</button>
+      <div className="card mt-0">
+        <h2 className="mt-0">Add Contact</h2>
+        <p>Name: <input type="text" id="name" name="name" placeholder="Name" value={name} onChange={handlerName}/></p>
+        <p>Mail: <input type="text" id="mail" name="mail" placeholder="Mail" value={mail} onChange={handlerMail} /></p>
+        <p>Phone: <input type="text" id="phone" name="phone" placeholder="Phone number" value={phone} onChange={handlerPhone} /></p>
+        <button className="btn btn-outlined" onClick={goToContactList}>Cancel</button>
+        <button className="btn btn-primary ml-1" onClick={addContact}>Add Contact</button>
+        <br></br>
+      </div>
     </div>
   )
 }

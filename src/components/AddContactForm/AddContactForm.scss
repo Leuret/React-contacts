@@ -1,3 +1,9 @@
+@import "../../styles/_variables.scss";
+
+h2 {
+  color: $primary-color;
+}
+
 .card {
   border: 1px solid #ccc;
   margin: .5rem 0;
@@ -18,15 +24,20 @@ input {
 
 /* Dark Theme */
 
+.dark h2 {
+  color: $white;
+}
+
+
 .dark .card {
-  border-color: #fff;
+  border-color: $white;
 }
 
 .dark input {
-  border-color: #fff;
+  border-color: $white;
 }
 
 .dark .btn:hover {
-  background-color: #fff;
-  color: #8118b7;
+  background-color: $white;
+  color: $primary-color;
 }

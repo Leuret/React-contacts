@@ -1,17 +1,24 @@
 import { useContext } from "react";
 import ContactContext from '../../contexts/ContactContext'
 import { Link } from "react-router-dom"
-import arrowIcon from "./../../assets/chevron-down-light.svg"
+import './ContactList.scss'
 
 const ContactList = ({filter}) => {
 
-  const dataContacts = useContext(ContactContext)
+  const {contacts, setContacts} = useContext(ContactContext)
 
-  const filteredContacts = dataContacts.contacts
+  const filteredContacts = contacts
   .filter(contact =>
     contact.name.length > 0 &&
     contact.name.toLowerCase().includes(filter.toLowerCase())
   )
+
+  // Function to delete a  Contact
+  const deleteContact = (index) => {
+    setContacts(contacts.filter( eachContact =>
+      eachContact.id !== index
+    ))
+  }
 
   return (
     <div>
@@ -20,8 +27,13 @@ const ContactList = ({filter}) => {
         ?
           filteredContacts
           .map((contact, index) => (
-            <div className="card" key={index}>
-              <Link to={`/contacts-list/${contact.id}`}>{contact.name} <img src={arrowIcon} alt="Show" className="rotate-right icon" /></Link>
+            <div className="card card-contact" key={index}>
+              <Link to={`/contacts-list/${contact.id}`}>
+                <span>{contact.name} &gt; </span>
+              </Link>
+              <div>
+                <div className="btn btn-outlined d-inline-block"  onClick={() => deleteContact(contact.id)}> Delete contact </div>
+              </div>
             </div>
           ))
         :

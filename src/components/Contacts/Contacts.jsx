@@ -18,7 +18,7 @@ const Contacts = () => {
   return (
     <div className={theme}>
       <div>
-        <Link className="btn mb-1" to="/add-contact">Add contact</Link>
+        <Link className="btn btn-primary mb-1" to="/add-contact">Add contact</Link>
       {
         errorContacts
         ?

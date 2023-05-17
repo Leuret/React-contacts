@@ -1,7 +1,6 @@
 import { useState } from "react"
 import mailIcon from "./../../assets/envelope-light.svg"
 import phoneIcon from "./../../assets/phone-light.svg"
-import arrowIcon from "./../../assets/chevron-down-light.svg"
 import "./ContactCard.scss"
 import { useParams } from "react-router-dom"
 import { useContext } from "react";
@@ -52,7 +51,7 @@ const ContactCard = () => {
 
   return (
     <div>
-      <button className="btn btn-outlined mr-1" onClick={goToContactList}><img src={arrowIcon} alt="Show" className="rotate-left icon" />Go back to list</button>
+      <button className="btn btn-outlined mr-1" onClick={goToContactList}> &lt; Go back to list</button>
 
       <div className="card">
         <div className="mt-0">
@@ -68,7 +67,7 @@ const ContactCard = () => {
                   <p>Mail: <input type="text" id="mail" name="mail"  defaultValue={contact.mail} onChange={handlerMail} /></p>
                   <p>Phone: <input type="text" id="phone" name="phone"  defaultValue={contact.phone} onChange={handlerPhone} /></p>
                   <button className="btn btn-outlined" onClick={() => setEdit(!isEditable)}>Cancel</button>
-                  <button className="btn ml-1" onClick={editContact}>Edit Contact</button>
+                  <button className="btn btn-primary ml-1" onClick={editContact}>Edit Contact</button>
                 </div>
               :
                 <div>
@@ -82,7 +81,7 @@ const ContactCard = () => {
                   </div>
                   <p></p>
                   <button className="btn btn-outlined" onClick={handlerEdit}>Edit</button>
-                  <button className="btn btn-outlined ml-1" onClick={() => deleteContact(contact.id)}>Delete</button>
+                  <button className="btn btn-outlined ml-1" onClick={deleteContact}>Delete</button>
                 </div>
             }
           </div>
