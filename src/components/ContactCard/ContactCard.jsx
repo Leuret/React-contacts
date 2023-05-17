@@ -2,7 +2,7 @@ import { useState } from "react"
 import mailIcon from "./../../assets/envelope-light.svg"
 import phoneIcon from "./../../assets/phone-light.svg"
 import arrowIcon from "./../../assets/chevron-down-light.svg"
-import "./ContactCard.css"
+import "./ContactCard.scss"
 import { useParams } from "react-router-dom"
 import { useContext } from "react";
 import ContactContext from '../../contexts/ContactContext'

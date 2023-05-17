@@ -1,7 +1,7 @@
 import { useState } from "react"
 import ContactList from "../ContactList/ContactList"
 import SearchBar from "../SearchBar/SearchBar"
-import "./Contacts.css"
+import "./Contacts.scss"
 import { useContext } from "react";
 import ContactContext from '../../contexts/ContactContext'
 import ThemeContext from '../../contexts/ThemeContext'

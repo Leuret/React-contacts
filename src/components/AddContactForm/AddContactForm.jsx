@@ -1,5 +1,5 @@
 import { useState, useContext } from "react"
-import './AddContactForm.css';
+import './AddContactForm.scss';
 import ContactContext from '../../contexts/ContactContext'
 import { useNavigate } from "react-router-dom";
 
