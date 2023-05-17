@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const ContactCard = () => {
 
-  const {contacts, setContacts} = useContext(ContactContext)
+  const {contacts, setContacts, deleteContact} = useContext(ContactContext)
   const { id } = useParams()
   const contact = contacts[id - 1]
 
@@ -38,15 +38,6 @@ const ContactCard = () => {
         return eachContact
     }))
     setEdit(!isEditable)
-  }
-
-  
-  // Function to delete a  Contact
-  const deleteContact = () => {
-    setContacts(contacts.filter( eachContact =>
-      eachContact !== contact
-    ))
-    goToContactList()
   }
 
   return (
@@ -81,7 +72,11 @@ const ContactCard = () => {
                   </div>
                   <p></p>
                   <button className="btn btn-outlined" onClick={handlerEdit}>Edit</button>
-                  <button className="btn btn-outlined ml-1" onClick={deleteContact}>Delete</button>
+                  <button className="btn btn-outlined ml-1" onClick={() => {
+                    deleteContact(contact.id)
+                    goToContactList()
+                    }}
+                  >Delete</button>
                 </div>
             }
           </div>

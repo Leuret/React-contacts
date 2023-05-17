@@ -5,20 +5,13 @@ import './ContactList.scss'
 
 const ContactList = ({filter}) => {
 
-  const {contacts, setContacts} = useContext(ContactContext)
+  const {contacts, deleteContact} = useContext(ContactContext)
 
   const filteredContacts = contacts
   .filter(contact =>
     contact.name.length > 0 &&
     contact.name.toLowerCase().includes(filter.toLowerCase())
   )
-
-  // Function to delete a  Contact
-  const deleteContact = (index) => {
-    setContacts(contacts.filter( eachContact =>
-      eachContact.id !== index
-    ))
-  }
 
   return (
     <div>

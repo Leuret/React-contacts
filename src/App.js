@@ -19,6 +19,13 @@ const App = () => {
 
   const [theme, setTheme] = useState('light')
 
+  // Function to delete a  Contact
+  const deleteContact = (index) => {
+    setContacts(contacts.filter( eachContact =>
+      eachContact.id !== index
+    ))
+  }
+
   return (
     <ThemeContext.Provider value={theme}>
       <div className={"App " + theme}>
@@ -27,13 +34,13 @@ const App = () => {
           <Routes>
             <Route path="/" element={ <Home/> } />
             <Route path="/contacts-list" element={
-              <ContactContext.Provider value={{contacts, setContacts, loadingContacts, errorContacts}}>
+              <ContactContext.Provider value={{contacts, setContacts, deleteContact, loadingContacts, errorContacts}}>
                 <Contacts />
               </ContactContext.Provider>
             } >
             </Route>
             <Route path="/contacts-list/:id" element={
-              <ContactContext.Provider value={{contacts, setContacts}}>
+              <ContactContext.Provider value={{contacts, setContacts, deleteContact}}>
                 <ContactCard />
               </ContactContext.Provider>
             } >
