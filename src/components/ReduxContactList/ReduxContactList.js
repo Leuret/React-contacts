@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { connect } from 'react-redux'
 import { getFemales } from '../../actions/Contacts'
+import { Link } from "react-router-dom"
 
 const ContactList = ({dispatch, contactsRedux}) => {
 
@@ -17,7 +18,9 @@ const ContactList = ({dispatch, contactsRedux}) => {
         contactsRedux
           .map((contact, index) => (
             <div className="card card-contact" key={index}>
+              <Link to={`/contacts-list/${contact.id}`}>
                 <span>{contact.name} &gt; </span>
+              </Link>
             </div>
           ))
         :
