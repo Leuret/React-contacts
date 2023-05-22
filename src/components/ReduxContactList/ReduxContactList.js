@@ -35,8 +35,8 @@ const ContactList = ({dispatch, contactsRedux}) => {
 }
 
 // Redux State Mapping
-const mapStateToProps = (state) => ({
-  contactsRedux: state
+const mapStateToProps = state => ({
+  contactsRedux: state.contacts
 });
 
 // Redux Connection
