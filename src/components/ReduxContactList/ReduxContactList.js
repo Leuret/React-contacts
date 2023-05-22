@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 const ContactList = () => {
   const contactsRedux = useSelector(state  => state.contacts)
 
-
   return (
     <div>
       {
