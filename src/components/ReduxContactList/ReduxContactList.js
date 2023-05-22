@@ -1,14 +1,9 @@
-import { useEffect } from "react";
-import { connect } from 'react-redux'
-import { getFemales } from '../../actions/Contacts'
+import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 
-const ContactList = ({dispatch, contactsRedux}) => {
+const ContactList = () => {
+  const contactsRedux = useSelector(state  => state.contacts)
 
-  // Get Contact from Redux
-  useEffect(() => {
-    dispatch(getFemales())
-  }, [dispatch]);
 
   return (
     <div>
@@ -34,10 +29,7 @@ const ContactList = ({dispatch, contactsRedux}) => {
   )
 }
 
-// Redux State Mapping
-const mapStateToProps = state => ({
-  contactsRedux: state.contacts
-});
+
 
 // Redux Connection
-export default connect(mapStateToProps)(ContactList);
+export default ContactList;
