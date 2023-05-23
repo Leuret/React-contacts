@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteTodo } from '../../slices/tasks/tasksSlice';
+import { getTasks, deleteTodo } from '../../slices/tasks/tasksSlice';
 
 const TaskList = () => {
-  const tasks = useSelector(state => state.tasks.tasks);
+  const {tasks, loading} = useSelector(state => state.tasks);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTasks())
+  }, [])
 
   const handleDelete = (id) => {
     dispatch(deleteTodo(id));
@@ -13,6 +17,10 @@ const TaskList = () => {
   return (
     <div>
       {
+        loading
+        ?
+        <p>Loading...</p>
+        :
         tasks.length > 0
         ?
         <div className="tasklist">
@@ -21,7 +29,12 @@ const TaskList = () => {
             <ul className="tasks">
               {tasks.map((task) => (
                 <li className="task" key={task.id}>
-                  {task.text}
+                  {task.title}
+                  {
+                    task.completed
+                    &&
+                    <span className="tag-success">Completed</span>
+                  }
                   <button
                     className="delete-btn"
                     onClick={() => handleDelete(task.id)}

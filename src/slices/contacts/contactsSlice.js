@@ -1,4 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+export const fetchContacts = createAsyncThunk(
+  'contacts/fetchContacts',
+  async (thunkAPI) => {
+    const response = await fetch ('https://jsonplaceholder.typicode.com/users')
+    const data = await response.json()
+
+    return data
+  }
+)
 
 const initialState = {
   contacts: [{
@@ -37,6 +47,18 @@ const contactsSlice = createSlice({
       )
     }
   },
+  extraReducers: builder => {
+    builder
+    .addCase(fetchContacts.pending, (state, action) => {
+      //Loading
+    })
+    .addCase(fetchContacts.fulfilled, (state, action) => {
+      state = action.payload
+    })
+    .addCase(fetchContacts.rejected, (state, action) => {
+      //Error. Como el try catch
+    })
+  }
 });
 
 export const { getcontacts, addContact, deleteContact } = contactsSlice.actions;
