@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../slices/tasks/tasksSlice"
+import { addTask } from "../../slices/tasks/tasksSlice"
 import './Tasks.css'
 
 const Task = () => {
@@ -10,7 +10,7 @@ const Task = () => {
   function addNewTask() {
     const task = inputRef.current.value.trim();
     if (task !== "") {
-      dispatch(addTodo(task));
+      dispatch(addTask(task));
       inputRef.current.value = "";
     }
   }

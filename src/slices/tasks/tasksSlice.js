@@ -20,11 +20,20 @@ const tasksSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
-    addTodo: (state, action) => {
+    addTask: (state, action) => {
       state.tasks.push({ id: Date.now(), text: action.payload });
     },
-    deleteTodo: (state, action) => {
+    deleteTask: (state, action) => {
       state.tasks = state.tasks.filter((task) => task.id !== action.payload);
+    },
+    editTask: (state, action) => {
+      state.tasks = state.tasks.map((task) => {
+        if (task.id === action.payload.id)
+         // return {userId: task.userId, id: task.id, title:action.payload.title, completed:action.payload.status}
+         return {userId: task.userId, id: task.id, title: "New", completed: true}
+        else
+          return task
+      })
     },
   },
   extraReducers: {
@@ -41,6 +50,6 @@ const tasksSlice = createSlice({
   },
 });
 
-export const { addTodo, deleteTodo } = tasksSlice.actions;
+export const { addTask, deleteTask, editTask } = tasksSlice.actions;
 
 export default tasksSlice.reducer;
