@@ -11,6 +11,7 @@ import NotFound from './components/NotFound/NotFound'
 import AddContact from './components/AddContact/AddContact';
 import ContactCard from './components/ContactCard/ContactCard';
 import ReduxContactList from './components/Redux/ReduxContactList';
+import TaskPage from './components/Tasks/TasksPage';
 
 const App = () => {
 
@@ -52,6 +53,7 @@ const App = () => {
               </ContactContext.Provider> 
             } />
             <Route path="contacts-redux" element={ <ReduxContactList/> } />
+            <Route path="tasks" element={ <TaskPage/> } />
             <Route path="*" element={ <NotFound/> } />
           </Routes>
         </div>

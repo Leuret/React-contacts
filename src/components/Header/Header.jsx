@@ -62,6 +62,7 @@ const Header = ({themeParams}) => {
           <Li><Link to="/">Home</Link></Li>
           <Li><Link to="/contacts-list">Contacts</Link></Li>
           <Li><Link to="/contacts-redux">Contacts Redux</Link></Li>
+          <Li><Link to="/tasks">Tasks</Link></Li>
         </ul>
         <p className="align-right">
           <Button onClick={changeTheme}>Change Theme</Button>
