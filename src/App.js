@@ -12,6 +12,7 @@ import AddContact from './components/AddContact/AddContact';
 import ContactCard from './components/ContactCard/ContactCard';
 import ReduxContactList from './components/Redux/ReduxContactList';
 import TaskPage from './components/Tasks/TasksPage';
+import EditTask from './components/Tasks/EditTask';
 
 const App = () => {
 
@@ -54,6 +55,7 @@ const App = () => {
             } />
             <Route path="contacts-redux" element={ <ReduxContactList/> } />
             <Route path="tasks" element={ <TaskPage/> } />
+            <Route path="tasks/edit/:id" element={ <EditTask/> } />
             <Route path="*" element={ <NotFound/> } />
           </Routes>
         </div>
