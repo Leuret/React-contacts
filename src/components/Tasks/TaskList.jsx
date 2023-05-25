@@ -2,10 +2,19 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTasks, deleteTask } from '../../slices/tasks/tasksSlice';
 import { Link } from "react-router-dom"
+import useLocalStorage from '../../hooks/useLocalStorage'
 
 const TaskList = () => {
   const {tasks, loading} = useSelector(state => state.tasks);
   const dispatch = useDispatch();
+
+  const [localStorage, setLocalStorage] = useLocalStorage('tasks', null)
+
+  useEffect(() => {
+    if (!localStorage) {
+      setLocalStorage([])
+    }
+  }, [])
 
   useEffect(() => {
     dispatch(getTasks())
@@ -14,6 +23,11 @@ const TaskList = () => {
   const handleDelete = (id) => {
     dispatch(deleteTask(id));
   };
+  
+  const deleteLocalStorage = (mytask) => {
+    const newLocalStorage = localStorage.filter((task) => task !== mytask);
+    setLocalStorage(newLocalStorage)
+  }
 
   return (
     <div>
@@ -36,6 +50,8 @@ const TaskList = () => {
                     &&
                     <span className="tag-success">Completed</span>
                   }
+                  <button onClick={() => setLocalStorage([...localStorage, task])}>Save on LocalStorage</button>
+                  <button onClick={() => deleteLocalStorage(task)}>Delete from LocalStorage</button>
                   <button
                     className="delete-btn"
                   >
